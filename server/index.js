@@ -41,12 +41,16 @@ const options = {
   secure: false,
   onProxyReq: (proxyReq, req) => {
     // only attach headers to requests to the node
-    if (req.path.toLowerCase().includes('rpc/v0')) {
-      proxyReq.setHeader('Authorization', `Bearer ${process.env.TOKEN}`)
+    if (req.path.toLowerCase().includes('tools/price-conversion')) {
+      proxyReq.setHeader('X-CMC_PRO_API_KEY', process.env.CMC_PRO_API_KEY)
+      proxyReq.setHeader('Content-Type', 'application/json')
+      proxyReq.setHeader('Access-Control-Allow-Origin', '*')
+      proxyReq.setHeader('Access-Control-Allow-Headers', 'X-Requested-With')
+      proxyReq.setHeader('Accept', 'application/json')
     }
   },
   onProxyRes: proxyRes => {
-    delete proxyRes.headers.Authorization
+    delete proxyRes.headers['set-cookie']
   }
 }
 
