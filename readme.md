@@ -1,4 +1,4 @@
-This is a proxy HTTP server for the CoinMarketCap api, primarily used for injecting an authorization header into proxied requests, so that client side applications can't see private secrets.
+This is a proxy HTTP server for the CoinMarketCap API, primarily used for injecting an authorization header into proxied requests, so that client side applications can't see private secrets.
 
 make sure to add a `.env` file that exports a `COINMARKETCAP_API_KEY` variable and a `TARGET` variable.
 
